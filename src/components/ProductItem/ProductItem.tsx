@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, Button, Image } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import styles from './ProductItem.style';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import AddCartButton, { AddCartButtonTypes } from '../AddCartButton/AddCartButton';
 
 interface ProductItemProps {
@@ -15,9 +14,10 @@ interface ProductItemProps {
 }
 
 const ProductItem: React.FC<ProductItemProps> = ({ product, inCart, onAdd, onRemove }) => {
+  const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${product.url.split('/')[6]}.png`;
   return (
     <View style={styles.container}>
-      <Image style={styles.image} resizeMode='contain' source={{ uri: 'https://via.placeholder.com/150' }} />
+      <Image source={{ uri: imgUrl }} style={styles.image} resizeMode='contain' />
       <Text style={styles.text}>{product.name}</Text>
       {inCart ? (
         <AddCartButton type={AddCartButtonTypes.Remove} onPress={onRemove} />
