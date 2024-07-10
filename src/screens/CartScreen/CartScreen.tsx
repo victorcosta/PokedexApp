@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, FlatList, Button, Text, Image, TouchableOpacity } from 'react-native';
+import { View, FlatList, Text } from 'react-native';
 import { useCart } from '../../context/CartContext';
-import Icon from 'react-native-vector-icons/FontAwesome6';
 import styles from './CartScreen.style';
 import CartItem from '../../components/CartItem/CartItem';
 
@@ -20,7 +19,7 @@ const CartScreen: React.FC = () => {
         </View>
       ) : (
         <>
-          <Text style={styles.textProducts}>{cart.length} Produtos Adicionados</Text>
+          <Text style={styles.textProducts}>{cart.length} products added</Text>
           <FlatList
           data={cart}
           renderItem={renderItem}
