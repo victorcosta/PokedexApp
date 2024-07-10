@@ -12,11 +12,11 @@ const CartButton: React.FC<CartButtonProps> = ({ cartCount }) => {
   const navigation = useNavigation();
 
   return (
-    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Cart')}>
+    <TouchableOpacity style={styles.button} testID='cartButton' onPress={() => navigation.navigate('Cart')}>
       <Text style={styles.text}>
         <Icon name="cart-shopping" size={20}/> 
         {cartCount > 0 && (
-          <View style={styles.badge}>
+          <View testID='badge' style={styles.badge}>
             <Text style={styles.badgeText} >
               {cartCount}
             </Text>
