@@ -1,4 +1,6 @@
+import StorybookUI from './.storybook'
 import React from 'react';
+import Config from 'react-native-config';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { CartProvider } from './src/context/CartContext';
@@ -31,4 +33,5 @@ function App() {
   );
 }
 
-export default App;
+
+export default Config.STORYBOOK_ENABLED === 'true' ? StorybookUI : App
