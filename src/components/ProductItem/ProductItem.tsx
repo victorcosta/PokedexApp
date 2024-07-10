@@ -17,12 +17,12 @@ const ProductItem: React.FC<ProductItemProps> = ({ product, inCart, onAdd, onRem
   const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${product.url.split('/')[6]}.png`;
   return (
     <View style={styles.container}>
-      <Image source={{ uri: imgUrl }} style={styles.image} resizeMode='contain' />
+      <Image testID='itemImage' source={{ uri: imgUrl }} style={styles.image} resizeMode='contain' />
       <Text style={styles.text}>{product.name}</Text>
       {inCart ? (
-        <AddCartButton type={AddCartButtonTypes.Remove} onPress={onRemove} />
+        <AddCartButton testID="removeCart" type={AddCartButtonTypes.Remove} onPress={onRemove} />
       ) : (
-        <AddCartButton type={AddCartButtonTypes.Add} onPress={onAdd} />
+        <AddCartButton testID="addCart" type={AddCartButtonTypes.Add} onPress={onAdd} />
       )}
     </View>
   );
