@@ -19,7 +19,7 @@ const CartScreen: React.FC = () => {
         </View>
       ) : (
         <>
-          <Text style={styles.textProducts}>{cart.length} products added</Text>
+          <Text style={styles.textProducts}>{cart.length} {cart.length > 1 ? 'products' : 'product'} added</Text>
           <FlatList
           data={cart}
           renderItem={renderItem}
