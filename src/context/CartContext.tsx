@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 interface Product {
   name: string;
@@ -11,9 +11,14 @@ interface CartContextProps {
   removeFromCart: (product: Product) => void;
 }
 
+export interface CartProviderProps {
+  children?: any,
+  value?:CartContextProps
+};
+
 const CartContext = createContext<CartContextProps | undefined>(undefined);
 
-export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<Product[]>([]);
 
   const addToCart = (product: Product) => {
