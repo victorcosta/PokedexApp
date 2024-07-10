@@ -8,6 +8,15 @@ const styles = StyleSheet.create({
     alignItems:'center',
     backgroundColor: "#fff",
     padding: 8,
+    borderRadius: 8,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.20,
+    shadowRadius: 1.41,
+    elevation: 2,
   },
   contentItem: {
     flexDirection: 'row',

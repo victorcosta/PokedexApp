@@ -5,7 +5,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
-    padding: 16,
+    paddingHorizontal: 8,
+    paddingVertical: 16,
   },
 });
 
