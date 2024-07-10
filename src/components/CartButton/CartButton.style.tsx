@@ -7,15 +7,16 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
   },
-  count: {
+  badge: {
     backgroundColor:"#E07A5F",
-    width: 18,
-    height: 18,
+    width: 15,
+    height: 15,
     alignItems:'center',
+    justifyContent: 'center',
     borderRadius: 8,
-    
   },
-  countText: {
+  badgeText: {
+    fontSize: 10,
     color: '#fff'
   }
 });
