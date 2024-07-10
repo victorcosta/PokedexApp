@@ -1,53 +1,26 @@
 import React from 'react';
-import { View } from 'react-native';
-import { Meta, StoryObj } from '@storybook/react-native';
-import { withKnobs, text } from '@storybook/addon-knobs';
-import { action } from '@storybook/addon-actions';
-import ProductItem from './ProductItem'; // ajuste o caminho conforme necessário
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import ProductItem from './ProductItem';
 
-const meta: Meta = {
+export default {
   title: 'ProductItem',
   component: ProductItem,
-  decorators: [withKnobs],
+} as ComponentMeta<typeof ProductItem>;
+
+const Template: ComponentStory<typeof ProductItem> = (args) => <ProductItem {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  product: { name: 'Bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
+  inCart: false,
+  onAdd: () => {},
+  onRemove: () => {},
 };
 
-export default meta;
-
-type Story = StoryObj<typeof ProductItem>;
-
-export const Default: Story = {
-  args: {
-    product: {
-      name: text('Product Name', 'Pikachu'),
-      url: text('Product URL', 'https://pokeapi.co/api/v2/pokemon/25/'),
-    },
-    inCart: false,
-    onAdd: action('Add to Cart'),
-    onRemove: action('Remove from Cart'),
-  },
-  render: (args) => (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <View style={{height: 200}}>
-        <ProductItem {...args} />
-      </View>
-    </View>
-  ),
-};
-export const Secondary: Story = {
-  args: {
-    product: {
-      name: text('Product Name', 'Pikachu'),
-      url: text('Product URL', 'https://pokeapi.co/api/v2/pokemon/25/'),
-    },
-    inCart: true,
-    onAdd: action('Add to Cart'),
-    onRemove: action('Remove from Cart'),
-  },
-  render: (args) => (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <View style={{height: 200}}>
-        <ProductItem {...args} />
-      </View>
-    </View>
-  ),
+export const InCart = Template.bind({});
+InCart.args = {
+  product: { name: 'Bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
+  inCart: true,
+  onAdd: () => {},
+  onRemove: () => {},
 };
