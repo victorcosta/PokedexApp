@@ -13,8 +13,8 @@ const CartButton: React.FC<CartButtonProps> = ({ cartCount }) => {
 
   return (
     <TouchableOpacity style={styles.button} testID='cartButton' onPress={() => navigation.navigate('Cart')}>
-      <Text style={styles.text}>
-        <Icon name="cart-shopping" size={22}/> 
+      <View style={styles.icon}>
+        <Icon name="cart-shopping" size={20}/> 
         {cartCount > 0 && (
           <View testID='badge' style={styles.badge}>
             <Text style={styles.badgeText} >
@@ -22,7 +22,7 @@ const CartButton: React.FC<CartButtonProps> = ({ cartCount }) => {
             </Text>
           </View>
         )}
-      </Text>
+      </View>
     </TouchableOpacity>
   );
 };

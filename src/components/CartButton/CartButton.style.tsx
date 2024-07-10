@@ -4,8 +4,8 @@ const styles = StyleSheet.create({
   button: {
     marginRight: 16,
   },
-  text: {
-    fontSize: 16,
+  icon: {
+    marginRight: 5
   },
   badge: {
     backgroundColor:"#E07A5F",
@@ -14,6 +14,10 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent: 'center',
     borderRadius: 8,
+    position: 'absolute',
+    top: -5,
+    right: -10
+
   },
   badgeText: {
     fontSize: 10,
