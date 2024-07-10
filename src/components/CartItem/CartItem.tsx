@@ -16,12 +16,12 @@ const CartItem: React.FC<CartItemProps> = ({ product, removeFromCart }) => {
   return (
     <View style={styles.item}>
       <View style={styles.contentItem}>
-        <Image style={styles.itemImage} resizeMode='contain' source={{ uri: imageUrl }} />
+        <Image testID='itemImage' style={styles.itemImage} resizeMode='contain' source={{ uri: imageUrl }} />
         <Text style={styles.itemText}>
           {product.name}
         </Text>
       </View>
-      <TouchableOpacity style={styles.itemRemove} onPress={() => removeFromCart(product)}>
+      <TouchableOpacity testID='itemRemove' style={styles.itemRemove} onPress={() => removeFromCart(product)}>
         <Icon name="xmark" color="#E07A5F" size={24}/>
       </TouchableOpacity>
     </View>
