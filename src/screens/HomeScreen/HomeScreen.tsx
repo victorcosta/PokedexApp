@@ -20,7 +20,7 @@ const HomeScreen = ({ navigation }: any) => {
   useEffect(() => {
     setLoading(true);
     const getApi = async () => {
-      await axios.get('https://pokeapi.co/api/v2/pokemon?limit=20')
+      await axios.get('https://pokeapi.co/api/v2/pokemon?limit=30')
         .then(response => {
           setProducts(response.data.results)
           setLoading(false);
