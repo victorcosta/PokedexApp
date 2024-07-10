@@ -8,11 +8,20 @@ const styles = StyleSheet.create({
   list: {
     padding: 16,
   },
-  item: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 16,
+  textProducts: {
+    paddingHorizontal: 16,
+    fontSize: 18,
+    color: '#3D405B',
   },
+  centerContent: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent:'center',
+  },
+  emptyText: {
+    fontSize: 18,
+    color: '#3D405B',
+  }
 });
 
 export default styles;
