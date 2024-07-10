@@ -6,7 +6,7 @@ const product = { name: 'Bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/'
 const removeFromCart = jest.fn();
 
 describe('CartItem Component', () => {
-  test('shoud render CartItem correctly', () => {
+  it('shoud render CartItem correctly', () => {
     const { getByText, getByTestId } = render(
       <CartItem
         product={product}
@@ -18,7 +18,7 @@ describe('CartItem Component', () => {
     expect(getByTestId('itemImage')).toBeTruthy();
   });
 
-  test('shoud call removeFromCart function when remove button is pressed', () => {
+  it('shoud call removeFromCart function when remove button is pressed', () => {
     const { getByTestId } = render(
       <CartItem
         product={product}

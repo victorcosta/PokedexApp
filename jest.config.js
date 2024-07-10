@@ -3,4 +3,7 @@ module.exports = {
   transformIgnorePatterns: [
     'node_modules/(?!(jest-)?@react-native|react-native|@react-navigation)',
   ],
+  "setupFiles": [
+    "<rootDir>/setup-jest.js"
+  ],
 };

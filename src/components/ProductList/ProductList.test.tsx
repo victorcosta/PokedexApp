@@ -15,7 +15,7 @@ const onAddToCart = jest.fn();
 const onRemoveFromCart = jest.fn();
 
 describe('ProductList Component', () => {
-  test('shoud render ProductList correctly', () => {
+  it('Should render ProductList correctly', () => {
     const { getByText } = render(
       <ProductList
         products={products}
@@ -29,7 +29,7 @@ describe('ProductList Component', () => {
     expect(getByText('Ivysaur')).toBeTruthy();
   });
 
-  test('soud call onAddToCart funcion when add button is pressed', () => {
+  it('should call onAddToCart funcion when add button is pressed', () => {
     const { getAllByTestId } = render(
       <ProductList
         products={products}
@@ -44,7 +44,7 @@ describe('ProductList Component', () => {
     expect(onAddToCart).toHaveBeenCalledWith(products[0]);
   });
 
-  test('shoud call onRemoveFromCart function when remove button is pressed', () => {
+  it('Should call onRemoveFromCart function when remove button is pressed', () => {
     const { getByTestId } = render(
       <ProductList
         products={products}

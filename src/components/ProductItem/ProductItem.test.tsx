@@ -8,7 +8,7 @@ const onRemove = jest.fn();
 
 
 describe('ProductItem Component', () => {
-  test('shoud render ProductItem correctly', () => {
+  it('Should render ProductItem correctly', () => {
     const { getByText, getByTestId } = render(
       <ProductItem
         product={product}
@@ -22,7 +22,7 @@ describe('ProductItem Component', () => {
     expect(getByTestId('itemImage')).toBeTruthy();
   });
 
-  test('shoud call onAdd function when add button is pressed', () => {
+  it('Should call onAdd function when add button is pressed', () => {
     const { getByTestId } = render(
       <ProductItem
         product={product}
@@ -37,7 +37,7 @@ describe('ProductItem Component', () => {
     expect(onAdd).toHaveBeenCalledWith();
   });
 
-  test('shoud call onRemove function when remove button is pressed', () => {
+  it('Should call onRemove function when remove button is pressed', () => {
     const { getByTestId } = render(
       <ProductItem
         product={product}

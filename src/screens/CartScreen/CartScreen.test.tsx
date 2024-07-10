@@ -16,32 +16,34 @@ beforeEach(() => {
   (useCart as jest.Mock).mockReturnValue(mockCart);
 });
 
-test('renders empty cart message', () => {
-  const { getByText } = render(
-    <NavigationContainer>
-      <CartScreen />
-    </NavigationContainer>
-  );
+describe('Cart Screen', () => {
+  it('renders empty cart message', () => {
+    const { getByText } = render(
+      <NavigationContainer>
+        <CartScreen />
+      </NavigationContainer>
+    );
 
-  expect(getByText('The cart is empty!')).toBeTruthy();
-});
-
-test('renders cart items correctly', () => {
-  const cart = [
-    { name: 'Bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
-    { name: 'Ivysaur', url: 'https://pokeapi.co/api/v2/pokemon/2/' },
-  ];
-  (useCart as jest.Mock).mockReturnValue({
-    ...mockCart,
-    cart,
+    expect(getByText('The cart is empty!')).toBeTruthy();
   });
 
-  const { getByText } = render(
-    <NavigationContainer>
-      <CartScreen />
-    </NavigationContainer>
-  );
+  it('renders cart items correctly', () => {
+    const cart = [
+      { name: 'Bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
+      { name: 'Ivysaur', url: 'https://pokeapi.co/api/v2/pokemon/2/' },
+    ];
+    (useCart as jest.Mock).mockReturnValue({
+      ...mockCart,
+      cart,
+    });
 
-  expect(getByText('Bulbasaur')).toBeTruthy();
-  expect(getByText('Ivysaur')).toBeTruthy();
+    const { getByText } = render(
+      <NavigationContainer>
+        <CartScreen />
+      </NavigationContainer>
+    );
+
+    expect(getByText('Bulbasaur')).toBeTruthy();
+    expect(getByText('Ivysaur')).toBeTruthy();
+  });
 });

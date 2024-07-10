@@ -22,87 +22,88 @@ beforeEach(() => {
   jest.clearAllMocks();
   (useCart as jest.Mock).mockReturnValue(mockCart);
 });
+describe('Home Screen', () => {
+  it('renders loading state correctly', async () => {
+    (axios.get as jest.Mock).mockResolvedValueOnce({ data: { results: [] } });
 
-test('renders loading state correctly', async () => {
-  (axios.get as jest.Mock).mockResolvedValueOnce({ data: { results: [] } });
+    const { getByTestId } = render(
+      <NavigationContainer>
+        <HomeScreen navigation={mockNavigation} />
+      </NavigationContainer>
+    );
 
-  const { getByTestId } = render(
-    <NavigationContainer>
-      <HomeScreen navigation={mockNavigation} />
-    </NavigationContainer>
-  );
+    expect(getByTestId('loading-indicator')).toBeTruthy();
 
-  expect(getByTestId('loading-indicator')).toBeTruthy();
-
-  await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(1));
-});
-
-test('renders error state correctly', async () => {
-  (axios.get as jest.Mock).mockRejectedValueOnce(new Error('Network error'));
-
-  const { getByText } = render(
-    <NavigationContainer>
-      <HomeScreen navigation={mockNavigation} />
-    </NavigationContainer>
-  );
-
-  await waitFor(() => {
-    expect(getByText('Ooops! SomeThing went wrong!')).toBeTruthy();
+    await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(1));
   });
-});
 
-test('renders product list correctly', async () => {
-  const products = [
-    { name: 'Bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
-    { name: 'Ivysaur', url: 'https://pokeapi.co/api/v2/pokemon/2/' },
-  ];
-  (axios.get as jest.Mock).mockResolvedValueOnce({ data: { results: products } });
+  it('renders error state correctly', async () => {
+    (axios.get as jest.Mock).mockRejectedValueOnce(new Error('Network error'));
 
-  const { getByText } = render(
-    <NavigationContainer>
-      <HomeScreen navigation={mockNavigation} />
-    </NavigationContainer>
-  );
+    const { getByText } = render(
+      <NavigationContainer>
+        <HomeScreen navigation={mockNavigation} />
+      </NavigationContainer>
+    );
 
-  await waitFor(() => {
-    expect(getByText('Bulbasaur')).toBeTruthy();
-    expect(getByText('Ivysaur')).toBeTruthy();
-  });
-});
-
-test('updates cart count in header', async () => {
-  const products = [
-    { name: 'Bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
-    { name: 'Ivysaur', url: 'https://pokeapi.co/api/v2/pokemon/2/' },
-  ];
-  (axios.get as jest.Mock).mockResolvedValueOnce({ data: { results: products } });
-
-  const { rerender } = render(
-    <NavigationContainer>
-      <HomeScreen navigation={mockNavigation} />
-    </NavigationContainer>
-  );
-
-  await waitFor(() => {
-    expect(mockNavigation.setOptions).toHaveBeenCalledWith({
-      headerRight: expect.any(Function),
+    await waitFor(() => {
+      expect(getByText('Ooops! SomeThing went wrong!')).toBeTruthy();
     });
   });
 
-  (useCart as jest.Mock).mockReturnValue({
-    ...mockCart,
-    cart: [products[0]],
+  it('renders product list correctly', async () => {
+    const products = [
+      { name: 'Bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
+      { name: 'Ivysaur', url: 'https://pokeapi.co/api/v2/pokemon/2/' },
+    ];
+    (axios.get as jest.Mock).mockResolvedValueOnce({ data: { results: products } });
+
+    const { getByText } = render(
+      <NavigationContainer>
+        <HomeScreen navigation={mockNavigation} />
+      </NavigationContainer>
+    );
+
+    await waitFor(() => {
+      expect(getByText('Bulbasaur')).toBeTruthy();
+      expect(getByText('Ivysaur')).toBeTruthy();
+    });
   });
 
-  rerender(
-    <NavigationContainer>
-      <HomeScreen navigation={mockNavigation} />
-    </NavigationContainer>
-  );
+  it('updates cart count in header', async () => {
+    const products = [
+      { name: 'Bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
+      { name: 'Ivysaur', url: 'https://pokeapi.co/api/v2/pokemon/2/' },
+    ];
+    (axios.get as jest.Mock).mockResolvedValueOnce({ data: { results: products } });
 
-  await waitFor(() => {
-    expect(mockNavigation.setOptions).toHaveBeenCalledWith({
-      headerRight: expect.any(Function),
+    const { rerender } = render(
+      <NavigationContainer>
+        <HomeScreen navigation={mockNavigation} />
+      </NavigationContainer>
+    );
+
+    await waitFor(() => {
+      expect(mockNavigation.setOptions).toHaveBeenCalledWith({
+        headerRight: expect.any(Function),
+      });
+    });
+
+    (useCart as jest.Mock).mockReturnValue({
+      ...mockCart,
+      cart: [products[0]],
+    });
+
+    rerender(
+      <NavigationContainer>
+        <HomeScreen navigation={mockNavigation} />
+      </NavigationContainer>
+    );
+
+    await waitFor(() => {
+      expect(mockNavigation.setOptions).toHaveBeenCalledWith({
+        headerRight: expect.any(Function),
+      });
     });
   });
 });
