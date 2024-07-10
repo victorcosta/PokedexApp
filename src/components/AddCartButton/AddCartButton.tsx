@@ -11,12 +11,14 @@ export enum AddCartButtonTypes {
 interface AddCartButtonProps {
   type: AddCartButtonTypes;
   onPress: () => void;
+  testID: string;
 }
 
-const AddCartButton: React.FC<AddCartButtonProps> = ({ type, onPress }) => {
+const AddCartButton: React.FC<AddCartButtonProps> = ({ type, onPress, testID }) => {
 
   return (
     <TouchableOpacity 
+      testID={testID}
       style={styles.button} 
       onPress={onPress}>
       <Text style={(type === AddCartButtonTypes.Add) ? styles.textAdd : styles.textRemove}>
