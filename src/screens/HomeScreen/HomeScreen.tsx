@@ -49,7 +49,7 @@ const HomeScreen = ({ navigation }: any) => {
       )}
       {loading && !hasError ? (
         <View style={styles.centerContent}>
-          <ActivityIndicator size={'large'} />
+          <ActivityIndicator testID='loading-indicator' size={'large'} />
         </View>
       ) : (
         <ProductList
