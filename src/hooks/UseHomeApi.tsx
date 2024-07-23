@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Product } from '../screens/HomeScreen/HomeScreen';
-import axios from 'axios';
+import { PokedexService, Pokedex } from '../services/Pokedex.service';
 
 export const useHomeApi = () => {
-  const [data, setData] = useState<Product[]>([]);
+  const [data, setData] = useState<Pokedex[]>([]);
   const [isLoading, setIsLoading] = useState<Boolean>(false);
   const [error, setError] = useState(false);
 
@@ -11,8 +10,7 @@ export const useHomeApi = () => {
     setIsLoading(true);
 
     try {
-      const API_URL = 'https://pokeapi.co/api/v2/pokemon?limit=30';
-      const { data } = await axios.get(API_URL);
+      const { data } = await PokedexService.list();
       setData(data.results);
     } catch (_) {
       setError(true);

@@ -9,11 +9,6 @@ import ErrorComponent from '../../components/ErrorComponent/ErrorComponent';
 
 import styles from './HomeScreen.style';
 
-export interface Product {
-  name: string;
-  url: string;
-}
-
 const HomeScreen = ({ navigation }: any) => {
   const { data, error, isLoading } = useHomeApi();
   const { cart, addToCart, removeFromCart } = useCart();
