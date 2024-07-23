@@ -3,8 +3,8 @@ import { ActivityIndicator, Text, View } from 'react-native';
 import ProductList from '../../components/ProductList/ProductList';
 import CartButton from '../../components/CartButton/CartButton';
 import { useCart } from '../../context/CartContext';
-import styles from './HomeScreen.style';
 import { useApi } from '../../hooks/UseApi';
+import styles from './HomeScreen.style';
 
 export interface Product {
   name: string;
