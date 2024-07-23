@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { View } from 'react-native';
+import { useCart } from '../../context/CartContext';
+import { useHomeApi } from '../../hooks/UseHomeApi';
 import ProductList from '../../components/ProductList/ProductList';
 import CartButton from '../../components/CartButton/CartButton';
-import { useCart } from '../../context/CartContext';
-import { useApi } from '../../hooks/UseApi';
+import Loading from '../../components/Loading/Loading';
+import ErrorComponent from '../../components/ErrorComponent/ErrorComponent';
+
 import styles from './HomeScreen.style';
 
 export interface Product {
@@ -12,7 +15,7 @@ export interface Product {
 }
 
 const HomeScreen = ({ navigation }: any) => {
-  const { data, error, isLoading } = useApi();
+  const { data, error, isLoading } = useHomeApi();
   const { cart, addToCart, removeFromCart } = useCart();
 
   useEffect(() => {
@@ -21,25 +24,22 @@ const HomeScreen = ({ navigation }: any) => {
     });
   }, [cart]);
 
+  if (isLoading && !error) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <ErrorComponent />;
+  }
+
   return (
     <View style={styles.container}>
-      {error && (
-        <View style={styles.centerContent}>
-          <Text style={styles.emptyText}>Ooops! SomeThing went wrong! </Text>
-        </View>
-      )}
-      {isLoading && !error ? (
-        <View style={styles.centerContent}>
-          <ActivityIndicator testID="loading-indicator" size={'large'} />
-        </View>
-      ) : (
-        <ProductList
-          products={data}
-          cart={cart}
-          onAddToCart={addToCart}
-          onRemoveFromCart={removeFromCart}
-        />
-      )}
+      <ProductList
+        products={data}
+        cart={cart}
+        onAddToCart={addToCart}
+        onRemoveFromCart={removeFromCart}
+      />
     </View>
   );
 };

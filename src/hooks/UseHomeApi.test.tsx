@@ -1,7 +1,7 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
-import { useApi } from './useApi';
+import { useHomeApi } from './UseHomeApi';
 
 describe('useApi', () => {
   let mock: MockAdapter;
@@ -22,7 +22,6 @@ describe('useApi', () => {
     const mockData = {
       results: [
         { name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' }
-        // add more mock Pokémon as needed
       ]
     };
 
@@ -30,7 +29,7 @@ describe('useApi', () => {
       .onGet('https://pokeapi.co/api/v2/pokemon?limit=30')
       .reply(200, mockData);
 
-    const { result, waitForNextUpdate } = renderHook(() => useApi());
+    const { result, waitForNextUpdate } = renderHook(() => useHomeApi());
 
     await waitForNextUpdate();
 
@@ -42,7 +41,7 @@ describe('useApi', () => {
   it('handles errors', async () => {
     mock.onGet('https://pokeapi.co/api/v2/pokemon?limit=30').reply(500);
 
-    const { result, waitForNextUpdate } = renderHook(() => useApi());
+    const { result, waitForNextUpdate } = renderHook(() => useHomeApi());
 
     await waitForNextUpdate();
 
@@ -58,7 +57,7 @@ describe('useApi', () => {
       });
     });
 
-    const { result, waitForNextUpdate } = renderHook(() => useApi());
+    const { result, waitForNextUpdate } = renderHook(() => useHomeApi());
 
     expect(result.current.isLoading).toBe(true);
 

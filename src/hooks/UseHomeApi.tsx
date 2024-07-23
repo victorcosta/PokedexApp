@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Product } from '../screens/HomeScreen/HomeScreen';
 import axios from 'axios';
 
-export const useApi = () => {
+export const useHomeApi = () => {
   const [data, setData] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState<Boolean>(false);
   const [error, setError] = useState(false);
