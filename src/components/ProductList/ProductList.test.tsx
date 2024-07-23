@@ -4,11 +4,11 @@ import ProductList from './ProductList';
 
 const products = [
   { name: 'Bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
-  { name: 'Ivysaur', url: 'https://pokeapi.co/api/v2/pokemon/2/' },
+  { name: 'Ivysaur', url: 'https://pokeapi.co/api/v2/pokemon/2/' }
 ];
 
 const cart = [
-  { name: 'Bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
+  { name: 'Bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' }
 ];
 
 const onAddToCart = jest.fn();

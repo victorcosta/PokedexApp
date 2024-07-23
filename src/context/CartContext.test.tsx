@@ -4,7 +4,9 @@ import { CartProvider, useCart, CartProviderProps } from './CartContext';
 import { Text } from 'react-native';
 import { render } from '@testing-library/react-native';
 
-const wrapper = ({ children }:CartProviderProps) => <CartProvider>{children}</CartProvider>;
+const wrapper = ({ children }: CartProviderProps) => (
+  <CartProvider>{children}</CartProvider>
+);
 
 const TestComponent: React.FC = () => {
   const { cart } = useCart();
@@ -22,7 +24,10 @@ describe('CartContext', () => {
 
   it('Should add product to cart', () => {
     const { result } = renderHook(() => useCart(), { wrapper });
-    const product = { name: 'Bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' };
+    const product = {
+      name: 'Bulbasaur',
+      url: 'https://pokeapi.co/api/v2/pokemon/1/'
+    };
 
     act(() => {
       result.current.addToCart(product);
@@ -33,7 +38,10 @@ describe('CartContext', () => {
 
   it('Should remove product from cart', () => {
     const { result } = renderHook(() => useCart(), { wrapper });
-    const product = { name: 'Bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' };
+    const product = {
+      name: 'Bulbasaur',
+      url: 'https://pokeapi.co/api/v2/pokemon/1/'
+    };
 
     act(() => {
       result.current.addToCart(product);
@@ -45,7 +53,6 @@ describe('CartContext', () => {
 
     expect(result.current.cart).toEqual([]);
   });
-  
 
   it('Should throw an error when useCart is used outside of CartProvider', () => {
     const renderWithoutCartProvider = () => {

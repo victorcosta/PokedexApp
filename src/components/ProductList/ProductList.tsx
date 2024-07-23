@@ -10,8 +10,12 @@ interface ProductListProps {
   onRemoveFromCart: (product: { name: string; url: string }) => void;
 }
 
-const ProductList: React.FC<ProductListProps> = ({ products, cart, onAddToCart, onRemoveFromCart }) => {
-  
+const ProductList: React.FC<ProductListProps> = ({
+  products,
+  cart,
+  onAddToCart,
+  onRemoveFromCart
+}) => {
   const renderItem = ({ item }: { item: { name: string; url: string } }) => {
     const inCart = cart.some(product => product.name === item.name);
 
@@ -29,7 +33,7 @@ const ProductList: React.FC<ProductListProps> = ({ products, cart, onAddToCart, 
     <FlatList
       data={products}
       renderItem={renderItem}
-      keyExtractor={(item) => item.name}
+      keyExtractor={item => item.name}
       contentContainerStyle={styles.list}
     />
   );

@@ -7,7 +7,7 @@ import { Text, View } from 'react-native';
 
 export default {
   title: 'CartButton',
-  component: CartButton,
+  component: CartButton
 } as ComponentMeta<typeof CartButton>;
 
 const Stack = createStackNavigator();
@@ -17,20 +17,29 @@ const MockedNavigator = ({ component }: { component: React.FC }) => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={component} />
-        <Stack.Screen name="Cart" component={() => <View><Text>Cart Screen</Text></View>} />
+        <Stack.Screen
+          name="Cart"
+          component={() => (
+            <View>
+              <Text>Cart Screen</Text>
+            </View>
+          )}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
-const Template: ComponentStory<typeof CartButton> = (args) => <MockedNavigator component={() => <CartButton {...args} />} />
+const Template: ComponentStory<typeof CartButton> = args => (
+  <MockedNavigator component={() => <CartButton {...args} />} />
+);
 
 export const EmptyCart = Template.bind({});
 EmptyCart.args = {
-  cartCount: 0,
+  cartCount: 0
 };
 
 export const FilledCart = Template.bind({});
 FilledCart.args = {
-  cartCount: 3,
+  cartCount: 3
 };

@@ -7,21 +7,21 @@ const styles = StyleSheet.create({
     paddingVertical: 16
   },
   list: {
-    padding: 16,
+    padding: 16
   },
   textProducts: {
     paddingHorizontal: 16,
     fontSize: 18,
-    color: '#3D405B',
+    color: '#3D405B'
   },
   centerContent: {
     flex: 1,
     alignItems: 'center',
-    justifyContent:'center',
+    justifyContent: 'center'
   },
   emptyText: {
     fontSize: 18,
-    color: '#3D405B',
+    color: '#3D405B'
   }
 });
 

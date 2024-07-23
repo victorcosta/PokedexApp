@@ -8,7 +8,7 @@ jest.mock('../../context/CartContext');
 
 const mockCart = {
   cart: [],
-  removeFromCart: jest.fn(),
+  removeFromCart: jest.fn()
 };
 
 beforeEach(() => {
@@ -30,11 +30,11 @@ describe('Cart Screen', () => {
   it('renders cart items correctly', () => {
     const cart = [
       { name: 'Bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
-      { name: 'Ivysaur', url: 'https://pokeapi.co/api/v2/pokemon/2/' },
+      { name: 'Ivysaur', url: 'https://pokeapi.co/api/v2/pokemon/2/' }
     ];
     (useCart as jest.Mock).mockReturnValue({
       ...mockCart,
-      cart,
+      cart
     });
 
     const { getByText } = render(

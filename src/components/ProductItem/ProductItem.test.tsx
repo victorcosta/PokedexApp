@@ -2,10 +2,12 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import ProductItem from './ProductItem';
 
-const product = { name: 'Bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' };
+const product = {
+  name: 'Bulbasaur',
+  url: 'https://pokeapi.co/api/v2/pokemon/1/'
+};
 const onAdd = jest.fn();
 const onRemove = jest.fn();
-
 
 describe('ProductItem Component', () => {
   it('Should render ProductItem correctly', () => {
@@ -52,4 +54,3 @@ describe('ProductItem Component', () => {
     expect(onRemove).toHaveBeenCalledWith();
   });
 });
-

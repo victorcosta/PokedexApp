@@ -9,7 +9,7 @@ const mockNavigate = jest.fn();
 
 beforeEach(() => {
   (useNavigation as jest.Mock).mockReturnValue({
-    navigate: mockNavigate,
+    navigate: mockNavigate
   });
 });
 

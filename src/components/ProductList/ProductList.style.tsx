@@ -6,8 +6,8 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     paddingHorizontal: 8,
-    paddingVertical: 16,
-  },
+    paddingVertical: 16
+  }
 });
 
 export default styles;
