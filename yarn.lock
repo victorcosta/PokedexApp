@@ -4934,6 +4934,7 @@ __metadata:
     "@types/react-native-vector-icons": ^6.4.18
     "@types/react-test-renderer": ^18.0.0
     axios: ^1.7.2
+    axios-mock-adapter: ^1.22.0
     babel-jest: ^29.6.3
     babel-loader: ^8.3.0
     eslint: ^8.19.0
@@ -4951,6 +4952,7 @@ __metadata:
     react-native-screens: ^3.32.0
     react-native-vector-icons: ^10.1.0
     react-test-renderer: 18.2.0
+    reactotron-react-native: ^5.1.7
     typescript: 5.0.4
   languageName: unknown
   linkType: soft
@@ -5350,6 +5352,18 @@ __metadata:
   dependencies:
     possible-typed-array-names: ^1.0.0
   checksum: 1aa3ffbfe6578276996de660848b6e95669d9a95ad149e3dd0c0cda77db6ee1dbd9d1dd723b65b6d277b882dd0c4b91a654ae9d3cf9e1254b7e93e4908d78fd3
+  languageName: node
+  linkType: hard
+
+"axios-mock-adapter@npm:^1.22.0":
+  version: 1.22.0
+  resolution: "axios-mock-adapter@npm:1.22.0"
+  dependencies:
+    fast-deep-equal: ^3.1.3
+    is-buffer: ^2.0.5
+  peerDependencies:
+    axios: ">= 0.17.0"
+  checksum: 3c0b1473a8263958f4409525fc4c9872cc1c055b69b0a9dba84084e8827e22e7b0d0241061b512a67c763f2116dee272761dd5907f235e5337df0d18ead00294
   languageName: node
   linkType: hard
 
@@ -8067,6 +8081,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-buffer@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "is-buffer@npm:2.0.5"
+  checksum: 764c9ad8b523a9f5a32af29bdf772b08eb48c04d2ad0a7240916ac2688c983bf5f8504bf25b35e66240edeb9d9085461f9b5dae1f3d2861c6b06a65fe983de42
+  languageName: node
+  linkType: hard
+
 "is-callable@npm:^1.1.3, is-callable@npm:^1.1.4, is-callable@npm:^1.2.7":
   version: 1.2.7
   resolution: "is-callable@npm:1.2.7"
@@ -9839,6 +9860,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mitt@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "mitt@npm:3.0.1"
+  checksum: b55a489ac9c2949ab166b7f060601d3b6d893a852515ae9eca4e11df01c013876df777ea109317622b5c1c60e8aae252558e33c8c94e14124db38f64a39614b1
+  languageName: node
+  linkType: hard
+
 "mkdirp@npm:^0.5.1":
   version: 0.5.6
   resolution: "mkdirp@npm:0.5.6"
@@ -10768,6 +10796,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-flipper@npm:^0.164.0":
+  version: 0.164.0
+  resolution: "react-native-flipper@npm:0.164.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-native: ">0.62.0"
+  checksum: 8730d7349bec27a23558760320082bd89b07fb404a87bf039a8d852455f28e4d5419f093bb7900ff5f6d85488274cfb246278b6700878bcabe574d5aacd88dac
+  languageName: node
+  linkType: hard
+
 "react-native-gesture-handler@npm:^2.17.1":
   version: 2.17.1
   resolution: "react-native-gesture-handler@npm:2.17.1"
@@ -11047,6 +11085,38 @@ __metadata:
   dependencies:
     loose-envify: ^1.1.0
   checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
+  languageName: node
+  linkType: hard
+
+"reactotron-core-client@npm:2.9.3":
+  version: 2.9.3
+  resolution: "reactotron-core-client@npm:2.9.3"
+  dependencies:
+    reactotron-core-contract: 0.2.3
+  checksum: 4af1e96a14af245e3b6b2f89689772a930e6bde349443ec16100f566430b94b47d63cbeed7d3c6a5e1ec5eb5ef0a85e81f54a701d61e73a95c5ad50ed154a698
+  languageName: node
+  linkType: hard
+
+"reactotron-core-contract@npm:0.2.3":
+  version: 0.2.3
+  resolution: "reactotron-core-contract@npm:0.2.3"
+  checksum: 956a6bf3cf845ac52ff90533da9714f2766e84570a391069601ed7ec8795ec6051c40ba6788f91ef1c34da808f98415e06a1cbd47a755fb7d4e821c6eb0d2377
+  languageName: node
+  linkType: hard
+
+"reactotron-react-native@npm:^5.1.7":
+  version: 5.1.7
+  resolution: "reactotron-react-native@npm:5.1.7"
+  dependencies:
+    mitt: ^3.0.1
+    react-native-flipper: ^0.164.0
+    reactotron-core-client: 2.9.3
+  peerDependencies:
+    react-native: ">=0.40.0"
+  dependenciesMeta:
+    react-native-flipper:
+      optional: true
+  checksum: 6cdfcf45592dbfd8ca3f51fa59da666dc7b5b91c34bdd6dbd703ae75d5cd86df275250cc9a784c02077e1d05952041f76940384d926372a1cf3d49f6134a59cd
   languageName: node
   linkType: hard
 

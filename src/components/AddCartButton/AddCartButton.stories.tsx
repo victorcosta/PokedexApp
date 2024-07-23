@@ -4,19 +4,21 @@ import AddCartButton, { AddCartButtonTypes } from './AddCartButton';
 
 export default {
   title: 'AddCartButton',
-  component: AddCartButton,
+  component: AddCartButton
 } as ComponentMeta<typeof AddCartButton>;
 
-const Template: ComponentStory<typeof AddCartButton> = (args) => <AddCartButton {...args} />;
+const Template: ComponentStory<typeof AddCartButton> = args => (
+  <AddCartButton {...args} />
+);
 
 export const Add = Template.bind({});
 Add.args = {
   type: AddCartButtonTypes.Add,
-  onPress: () => {},
+  onPress: () => {}
 };
 
 export const Remove = Template.bind({});
 Remove.args = {
   type: AddCartButtonTypes.Remove,
-  onPress: () => {},
+  onPress: () => {}
 };

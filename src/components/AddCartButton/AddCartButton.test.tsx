@@ -5,7 +5,11 @@ import AddCartButton, { AddCartButtonTypes } from './AddCartButton';
 describe('AddCartButton Component', () => {
   it('Should render AddCartButton correctly', () => {
     const { getByTestId } = render(
-      <AddCartButton type={AddCartButtonTypes.Add} onPress={jest.fn()} testID="addCart" />
+      <AddCartButton
+        type={AddCartButtonTypes.Add}
+        onPress={jest.fn()}
+        testID="addCart"
+      />
     );
 
     expect(getByTestId('addCart')).toBeTruthy();
@@ -13,7 +17,11 @@ describe('AddCartButton Component', () => {
 
   it('Should render remove button correctly', () => {
     const { getByTestId } = render(
-      <AddCartButton type={AddCartButtonTypes.Remove} onPress={jest.fn()} testID="removeCart" />
+      <AddCartButton
+        type={AddCartButtonTypes.Remove}
+        onPress={jest.fn()}
+        testID="removeCart"
+      />
     );
 
     expect(getByTestId('removeCart')).toBeTruthy();
@@ -22,7 +30,11 @@ describe('AddCartButton Component', () => {
   it('Should call onPress addCart when button is pressed', () => {
     const onPress = jest.fn();
     const { getByTestId } = render(
-      <AddCartButton type={AddCartButtonTypes.Add} onPress={onPress} testID="addCart" />
+      <AddCartButton
+        type={AddCartButtonTypes.Add}
+        onPress={onPress}
+        testID="addCart"
+      />
     );
 
     fireEvent.press(getByTestId('addCart'));
@@ -33,7 +45,11 @@ describe('AddCartButton Component', () => {
   it('Should call onPress RemoveCart when button is pressed', () => {
     const onPress = jest.fn();
     const { getByTestId } = render(
-      <AddCartButton type={AddCartButtonTypes.Remove} onPress={onPress} testID="removeCart" />
+      <AddCartButton
+        type={AddCartButtonTypes.Remove}
+        onPress={onPress}
+        testID="removeCart"
+      />
     );
 
     fireEvent.press(getByTestId('removeCart'));

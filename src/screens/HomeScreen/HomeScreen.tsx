@@ -3,59 +3,42 @@ import { ActivityIndicator, Text, View } from 'react-native';
 import ProductList from '../../components/ProductList/ProductList';
 import CartButton from '../../components/CartButton/CartButton';
 import { useCart } from '../../context/CartContext';
-import { ListPokedex } from '../../api/Api';
 import styles from './HomeScreen.style';
+import { useApi } from '../../hooks/UseApi';
 
-interface Product {
+export interface Product {
   name: string;
   url: string;
 }
 
 const HomeScreen = ({ navigation }: any) => {
-  const [loading, setLoading] = useState<Boolean>(false);
-  const [hasError, setHasError] = useState<Boolean>(false);
-  const [products, setProducts] = useState<Product[]>([]);
+  const { data, error, isLoading } = useApi();
   const { cart, addToCart, removeFromCart } = useCart();
 
   useEffect(() => {
-    const getApi = async () => {
-      try {
-        const { results } = await ListPokedex();
-        setProducts(results)
-      } catch (error) {
-        setHasError(true);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    getApi();
-  }, []);
-
-  useEffect(() => {
     navigation.setOptions({
-      headerRight: () => <CartButton cartCount={cart.length} />,
+      headerRight: () => <CartButton cartCount={cart.length} />
     });
   }, [cart]);
 
   return (
     <View style={styles.container}>
-      {hasError && (
+      {error && (
         <View style={styles.centerContent}>
           <Text style={styles.emptyText}>Ooops! SomeThing went wrong! </Text>
         </View>
       )}
-      {loading && !hasError ? (
+      {isLoading && !error ? (
         <View style={styles.centerContent}>
-          <ActivityIndicator testID='loading-indicator' size={'large'} />
+          <ActivityIndicator testID="loading-indicator" size={'large'} />
         </View>
       ) : (
         <ProductList
-          products={products}
+          products={data}
           cart={cart}
           onAddToCart={addToCart}
           onRemoveFromCart={removeFromCart}
-          />
+        />
       )}
     </View>
   );

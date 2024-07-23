@@ -9,13 +9,13 @@ jest.mock('axios');
 jest.mock('../../context/CartContext');
 
 const mockNavigation = {
-  setOptions: jest.fn(),
+  setOptions: jest.fn()
 };
 
 const mockCart = {
   cart: [],
   addToCart: jest.fn(),
-  removeFromCart: jest.fn(),
+  removeFromCart: jest.fn()
 };
 
 beforeEach(() => {
@@ -23,7 +23,6 @@ beforeEach(() => {
   (useCart as jest.Mock).mockReturnValue(mockCart);
 });
 describe('Home Screen', () => {
-
   it('renders error state correctly', async () => {
     (axios.get as jest.Mock).mockRejectedValueOnce(new Error('Network error'));
 
@@ -41,9 +40,11 @@ describe('Home Screen', () => {
   it('renders product list correctly', async () => {
     const products = [
       { name: 'Bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
-      { name: 'Ivysaur', url: 'https://pokeapi.co/api/v2/pokemon/2/' },
+      { name: 'Ivysaur', url: 'https://pokeapi.co/api/v2/pokemon/2/' }
     ];
-    (axios.get as jest.Mock).mockResolvedValueOnce({ data: { results: products } });
+    (axios.get as jest.Mock).mockResolvedValueOnce({
+      data: { results: products }
+    });
 
     const { getByText } = render(
       <NavigationContainer>
@@ -60,9 +61,11 @@ describe('Home Screen', () => {
   it('updates cart count in header', async () => {
     const products = [
       { name: 'Bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' },
-      { name: 'Ivysaur', url: 'https://pokeapi.co/api/v2/pokemon/2/' },
+      { name: 'Ivysaur', url: 'https://pokeapi.co/api/v2/pokemon/2/' }
     ];
-    (axios.get as jest.Mock).mockResolvedValueOnce({ data: { results: products } });
+    (axios.get as jest.Mock).mockResolvedValueOnce({
+      data: { results: products }
+    });
 
     const { rerender } = render(
       <NavigationContainer>
@@ -72,13 +75,13 @@ describe('Home Screen', () => {
 
     await waitFor(() => {
       expect(mockNavigation.setOptions).toHaveBeenCalledWith({
-        headerRight: expect.any(Function),
+        headerRight: expect.any(Function)
       });
     });
 
     (useCart as jest.Mock).mockReturnValue({
       ...mockCart,
-      cart: [products[0]],
+      cart: [products[0]]
     });
 
     rerender(
@@ -89,7 +92,7 @@ describe('Home Screen', () => {
 
     await waitFor(() => {
       expect(mockNavigation.setOptions).toHaveBeenCalledWith({
-        headerRight: expect.any(Function),
+        headerRight: expect.any(Function)
       });
     });
   });
