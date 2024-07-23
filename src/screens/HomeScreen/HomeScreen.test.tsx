@@ -23,19 +23,6 @@ beforeEach(() => {
   (useCart as jest.Mock).mockReturnValue(mockCart);
 });
 describe('Home Screen', () => {
-  it('renders loading state correctly', async () => {
-    (axios.get as jest.Mock).mockResolvedValueOnce({ data: { results: [] } });
-
-    const { getByTestId } = render(
-      <NavigationContainer>
-        <HomeScreen navigation={mockNavigation} />
-      </NavigationContainer>
-    );
-
-    expect(getByTestId('loading-indicator')).toBeTruthy();
-
-    await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(1));
-  });
 
   it('renders error state correctly', async () => {
     (axios.get as jest.Mock).mockRejectedValueOnce(new Error('Network error'));

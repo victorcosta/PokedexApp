@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Text, View } from 'react-native';
-import axios from 'axios';
 import ProductList from '../../components/ProductList/ProductList';
 import CartButton from '../../components/CartButton/CartButton';
 import { useCart } from '../../context/CartContext';
+import { ListPokedex } from '../../api/Api';
 import styles from './HomeScreen.style';
 
 interface Product {
@@ -18,17 +18,15 @@ const HomeScreen = ({ navigation }: any) => {
   const { cart, addToCart, removeFromCart } = useCart();
 
   useEffect(() => {
-    setLoading(true);
     const getApi = async () => {
-      await axios.get('https://pokeapi.co/api/v2/pokemon?limit=30')
-        .then(response => {
-          setProducts(response.data.results)
-          setLoading(false);
-        })
-        .catch(_ => {
-          setLoading(false);
-          setHasError(true);
-        });
+      try {
+        const { results } = await ListPokedex();
+        setProducts(results)
+      } catch (error) {
+        setHasError(true);
+      } finally {
+        setLoading(false);
+      }
     }
 
     getApi();
